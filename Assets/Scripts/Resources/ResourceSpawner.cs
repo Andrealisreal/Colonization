@@ -47,9 +47,9 @@ namespace Resources
         {
             while (enabled)
             {
-                yield return _wait;
-                
                 Spawn();
+                
+                yield return _wait;
             }
         }
     }

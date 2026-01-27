@@ -1,3 +1,4 @@
+using Bases;
 using UnityEngine;
 
 namespace Units
@@ -7,7 +8,7 @@ namespace Units
         private const float FullCircleRadians = 2f * Mathf.PI;
 
         [SerializeField] private Unit _prefab;
-        [SerializeField] private Transform _basePoint;
+        [SerializeField] private Base _base;
         [SerializeField] private float _radius;
         [SerializeField] private int _unitsPerCircle;
 
@@ -18,6 +19,7 @@ namespace Units
             var unit = Instantiate(_prefab);
 
             unit.transform.position = GetPositionAroundBase();
+            unit.SetMyBase(_base);
 
             return unit;
         }
@@ -29,7 +31,7 @@ namespace Units
 
             _spawnIndex++;
 
-            return _basePoint.position + offset;
+            return _base.transform.position + offset;
         }
     }
 }

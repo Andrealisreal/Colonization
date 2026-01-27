@@ -647,7 +647,7 @@ MonoBehaviour:
   - {fileID: 421084884}
   - {fileID: 297313341}
   _maxSpawnRadius: 5
-  _interval: 6
+  _interval: 2
 --- !u!1001 &1797867578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,10 +699,6 @@ PrefabInstance:
     - target: {fileID: 1265424767245008830, guid: 82a3d5a296e0b2e419365bcbaa0d9e41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1561469591349696295, guid: 82a3d5a296e0b2e419365bcbaa0d9e41, type: 3}
-      propertyPath: _interval
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2069466685817373354, guid: 82a3d5a296e0b2e419365bcbaa0d9e41, type: 3}
       propertyPath: m_Name

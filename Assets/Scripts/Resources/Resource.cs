@@ -11,6 +11,9 @@ namespace Resources
         {
             transform.position = Vector3.zero;
             transform.rotation = Quaternion.identity;
+            
+            transform.SetParent(null);
+            
             Released?.Invoke(this);
         }
     }

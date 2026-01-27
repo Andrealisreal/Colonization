@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units.UnitSpawner
   _prefab: {fileID: 2851131165489853853, guid: 0fab824017932fd418fe5df186ee120f, type: 3}
-  _basePoint: {fileID: 1265424767245008830}
+  _base: {fileID: 205510811482396253}
   _radius: 2
   _unitsPerCircle: 20
 --- !u!1 &2069466685817373354
@@ -243,6 +243,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bases.Base
   _scanner: {fileID: 1561469591349696295}
   _barrack: {fileID: 9182964188886780171}
+  _radius: 2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 72
 --- !u!1 &5817552482947543686
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +386,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _radius: 50
-  _interval: 10
+  _interval: 2
 --- !u!1 &8312943993012622765
 GameObject:
   m_ObjectHideFlags: 0

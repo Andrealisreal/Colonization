@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 2851131165489853853}
   - component: {fileID: 4066874026112940664}
   - component: {fileID: 5968405245287677191}
+  - component: {fileID: 1975739525935049939}
   m_Layer: 6
   m_Name: Unit
   m_TagString: Untagged
@@ -138,6 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unit
   _mover: {fileID: 5968405245287677191}
+  _collector: {fileID: 1975739525935049939}
+  _reachDistanceBase: 1.5
 --- !u!136 &4066874026112940664
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -174,3 +177,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units.UnitMover
   _speed: 5
+  _reachDistance: 0.5
+  _rotationSpeed: 300
+--- !u!114 &1975739525935049939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5583155134252408293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3fd77311435f94ba5bcc1102034fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Units.UnitCollector
+  _offset: {x: 0, y: 0.5, z: 0.8}
