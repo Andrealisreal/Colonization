@@ -12,17 +12,17 @@ namespace Bases
         private readonly Vector3 _basePosition;
         private readonly LayerMask _layerMask;
         private readonly float _radius;
-        private readonly Base _ownerBase;
+        private readonly int _ownerBase;
 
-        public BaseCollector(Vector3 basePosition, float radius, LayerMask layerMask, Base owner)
+        public BaseCollector(Vector3 basePosition, float radius, LayerMask layerMask, int ownerId)
         {
             _basePosition = basePosition;
             _radius = radius;
             _layerMask = layerMask;
-            _ownerBase = owner;
+            _ownerBase = ownerId;
         }
 
-        public event Action<Resource> Released;
+        public event Action<int, Resource> Released;
 
         public void HandleObjects()
         {
@@ -30,13 +30,13 @@ namespace Bases
 
             if (count == 0)
                 return;
-            
+
             for (var i = 0; i < count; i++)
             {
                 if (_colliders[i].TryGetComponent(out Unit unit) == false)
                     continue;
-                
-                if (unit.MyBase != _ownerBase)
+
+                if (unit.MyBaseId != _ownerBase)
                     continue;
 
                 if (unit.HasResource == false)
@@ -46,7 +46,7 @@ namespace Bases
 
                 resource.Release();
                 unit.Release();
-                Released?.Invoke(resource);
+                Released?.Invoke(_ownerBase, resource);
             }
         }
     }

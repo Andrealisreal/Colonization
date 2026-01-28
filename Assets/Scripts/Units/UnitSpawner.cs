@@ -19,7 +19,7 @@ namespace Units
             var unit = Instantiate(_prefab);
 
             unit.transform.position = GetPositionAroundBase();
-            unit.SetMyBase(_base);
+            unit.SetMyBase(_base.Id, _base.transform);
 
             return unit;
         }

@@ -1,4 +1,3 @@
-using System;
 using Resources;
 using UnityEngine;
 
@@ -10,18 +9,25 @@ namespace Bases
         [SerializeField] private BaseBarrack _barrack;
         [SerializeField] private float _radius;
         [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private ResourceHandler _resourceHandler;
 
-        private ResourceHandler _resourceHandler;
         private BaseCollector _collector;
+
+        public int Id { get; private set; }
+        private static int _nextId = 1;
 
         private void Awake()
         {
-            _resourceHandler = new ResourceHandler();
-            _collector = new BaseCollector(transform.position, _radius, _layerMask, this);
+            Id = _nextId++;
+            _collector = new BaseCollector(transform.position, _radius, _layerMask, Id);
         }
 
-        private void FixedUpdate() =>
+        private void Update()
+        {
             _collector.HandleObjects();
+
+            DispatchUnitToResource();
+        }
 
         private void OnEnable()
         {
@@ -34,12 +40,9 @@ namespace Bases
             _scanner.Detected -= OnDetect;
             _collector.Released -= _resourceHandler.Release;
         }
-        
-        private void OnDetect(Resource resource)
-        {
-            _resourceHandler.Add(resource);
-            DispatchUnitToResource(resource);
-        }
+
+        private void OnDetect(Resource resource) =>
+            _resourceHandler.Add(Id, resource);
 
         private void OnDrawGizmosSelected()
         {
@@ -47,17 +50,17 @@ namespace Bases
             Gizmos.DrawWireSphere(transform.position, _radius);
         }
 
-        private void DispatchUnitToResource(Resource resource)
+        private void DispatchUnitToResource()
         {
             foreach (var unit in _barrack.Units)
             {
-                if(unit.IsBusy)
+                if (unit.IsBusy)
                     continue;
-                
-                if(_resourceHandler.TryGetFree(out var freeResource) == false)
-                    return;
-                
-                unit.MoveToTarget(resource);
+
+                if (_resourceHandler.TryGetFree(Id, out var freeResource))
+                    unit.MoveToTarget(freeResource);
+                else
+                    break;
             }
         }
     }

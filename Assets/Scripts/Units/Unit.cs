@@ -1,4 +1,3 @@
-using Bases;
 using Resources;
 using UnityEngine;
 
@@ -11,10 +10,11 @@ namespace Units
         [SerializeField] private float _reachDistanceBase;
 
         private Resource _currentResource;
+        private Transform _basePosition;
 
         public bool HasResource { get; private set; }
         public bool IsBusy { get; private set; }
-        public Base MyBase { get; private set; }
+        public int MyBaseId { get; private set; }
 
         public void MoveToTarget(Resource resource)
         {
@@ -27,8 +27,11 @@ namespace Units
         public Resource TakeResource() =>
             _currentResource;
 
-        public void SetMyBase(Base myBase) =>
-            MyBase = myBase;
+        public void SetMyBase(int baseId, Transform basePosition)
+        {
+            _basePosition = basePosition;
+            MyBaseId = baseId;
+        }
 
         public void Release()
         {
@@ -42,7 +45,7 @@ namespace Units
             _collector.Raised -= ReturnToBase;
             _currentResource = resource;
             HasResource = true;
-            _mover.Move(MyBase.transform, _reachDistanceBase);
+            _mover.Move(_basePosition, _reachDistanceBase);
         }
     }
 }
