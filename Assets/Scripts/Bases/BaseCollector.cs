@@ -14,11 +14,12 @@ namespace Bases
         private readonly float _radius;
         private readonly Base _ownerBase;
 
-        public BaseCollector(Vector3 basePosition, float radius, LayerMask layerMask)
+        public BaseCollector(Vector3 basePosition, float radius, LayerMask layerMask, Base owner)
         {
             _basePosition = basePosition;
             _radius = radius;
             _layerMask = layerMask;
+            _ownerBase = owner;
         }
 
         public event Action<Resource> Released;
@@ -34,7 +35,7 @@ namespace Bases
             {
                 if (_colliders[i].TryGetComponent(out Unit unit) == false)
                     continue;
-
+                
                 if (unit.MyBase != _ownerBase)
                     continue;
 

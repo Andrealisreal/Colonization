@@ -647,7 +647,7 @@ MonoBehaviour:
   - {fileID: 421084884}
   - {fileID: 297313341}
   _maxSpawnRadius: 5
-  _interval: 2
+  _interval: 5
 --- !u!1001 &1797867578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -703,6 +703,10 @@ PrefabInstance:
     - target: {fileID: 2069466685817373354, guid: 82a3d5a296e0b2e419365bcbaa0d9e41, type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182964188886780171, guid: 82a3d5a296e0b2e419365bcbaa0d9e41, type: 3}
+      propertyPath: _startSize
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

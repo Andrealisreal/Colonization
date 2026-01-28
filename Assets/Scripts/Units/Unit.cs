@@ -11,25 +11,16 @@ namespace Units
         [SerializeField] private float _reachDistanceBase;
 
         private Resource _currentResource;
-        
+
         public bool HasResource { get; private set; }
         public bool IsBusy { get; private set; }
         public Base MyBase { get; private set; }
 
-        private void OnEnable()
-        {
-            _mover.Reached += _collector.CatchUp;
-            _collector.Raised += ReturnToBase;
-        }
-
-        private void OnDisable()
-        {
-            _mover.Reached -= _collector.CatchUp;
-        }
-
         public void MoveToTarget(Resource resource)
         {
             IsBusy = true;
+            _mover.Reached += _collector.CatchUp;
+            _collector.Raised += ReturnToBase;
             _mover.Move(resource.transform);
         }
 
@@ -47,8 +38,9 @@ namespace Units
 
         private void ReturnToBase(Resource resource)
         {
-            _currentResource = resource;
+            _mover.Reached -= _collector.CatchUp;
             _collector.Raised -= ReturnToBase;
+            _currentResource = resource;
             HasResource = true;
             _mover.Move(MyBase.transform, _reachDistanceBase);
         }

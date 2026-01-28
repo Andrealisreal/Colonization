@@ -17,8 +17,11 @@ namespace Bases
         private void Awake()
         {
             _resourceHandler = new ResourceHandler();
-            _collector = new BaseCollector(transform.position, _radius, _layerMask);
+            _collector = new BaseCollector(transform.position, _radius, _layerMask, this);
         }
+
+        private void FixedUpdate() =>
+            _collector.HandleObjects();
 
         private void OnEnable()
         {
