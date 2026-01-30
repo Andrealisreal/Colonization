@@ -6,6 +6,8 @@ namespace Bases
 {
     public class BaseBarrack : MonoBehaviour
     {
+        [field: SerializeField] public int AmountResourcesSpawn { get; private set; }
+        
         [SerializeField] private UnitSpawner _unitSpawner;
         [SerializeField] private int _startSize;
 
@@ -13,10 +15,22 @@ namespace Bases
         
         public IReadOnlyList<Unit> Units => _units;
 
-        private void Start()
+        public void Initialize(bool spawnStartUnits)
         {
+            if (spawnStartUnits == false)
+                return;
+
             for (var i = 0; i < _startSize; i++)
                 _units.Add(_unitSpawner.Spawn());
         }
+
+        public void Spawn() =>
+            _units.Add(_unitSpawner.Spawn());
+
+        public void RemoveUnit(Unit unit) =>
+            _units.Remove(unit);
+        
+        public void AddUnit(Unit unit) =>
+            _units.Add(unit);
     }
 }

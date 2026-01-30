@@ -99,10 +99,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1406669023663164807}
-  - component: {fileID: 2851131165489853853}
   - component: {fileID: 4066874026112940664}
+  - component: {fileID: 2851131165489853853}
   - component: {fileID: 5968405245287677191}
   - component: {fileID: 1975739525935049939}
+  - component: {fileID: 6853798977701280171}
   m_Layer: 6
   m_Name: Unit
   m_TagString: Untagged
@@ -126,21 +127,6 @@ Transform:
   - {fileID: 2160971700109047618}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2851131165489853853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5583155134252408293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f27c32fa06da54fb2b0432142f37dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
-  _mover: {fileID: 5968405245287677191}
-  _collector: {fileID: 1975739525935049939}
-  _reachDistanceBase: 1.5
 --- !u!136 &4066874026112940664
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -164,6 +150,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2851131165489853853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5583155134252408293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f27c32fa06da54fb2b0432142f37dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unit
+  _mover: {fileID: 5968405245287677191}
+  _collector: {fileID: 1975739525935049939}
+  _reachDistanceBase: 1.5
+  _builder: {fileID: 6853798977701280171}
 --- !u!114 &5968405245287677191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,3 +194,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units.UnitCollector
   _offset: {x: 0, y: 0.5, z: 0.8}
+--- !u!114 &6853798977701280171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5583155134252408293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e0ea1b116aabe44b1dc7a4392e78c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Units.UnitBuilder
+  _baseSpawner: {fileID: 0}

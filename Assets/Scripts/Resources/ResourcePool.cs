@@ -33,6 +33,9 @@ namespace Resources
         private static void OnRelease(Resource resource)
         {
             resource.Released -= OnRelease;
+            resource.transform.position = Vector3.zero;
+            resource.transform.rotation = Quaternion.identity;
+            resource.transform.SetParent(null);
             resource.gameObject.SetActive(false);
         }
 

@@ -45,7 +45,7 @@ namespace Units
         {
             var direction = _target.position - transform.position;
 
-            if ((direction.sqrMagnitude > RotationThreshold) == false)
+            if (direction.sqrMagnitude > RotationThreshold == false)
                 return;
 
             var targetRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);

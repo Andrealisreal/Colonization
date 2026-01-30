@@ -7,14 +7,7 @@ namespace Resources
     {
         public event Action<Resource> Released;
 
-        public void Release()
-        {
-            transform.position = Vector3.zero;
-            transform.rotation = Quaternion.identity;
-            
-            transform.SetParent(null);
-            
+        public void Release() =>
             Released?.Invoke(this);
-        }
     }
 }
