@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 205510811482396253}
   - component: {fileID: 2273821381701764272}
   - component: {fileID: 6939028428476534365}
+  - component: {fileID: 8892819760019100489}
   m_Layer: 7
   m_Name: Base
   m_TagString: Untagged
@@ -320,7 +321,6 @@ Transform:
   - {fileID: 8371347112913788332}
   - {fileID: 1255457213503623123}
   - {fileID: 1775555714719614535}
-  - {fileID: 7029696608700718251}
   - {fileID: 1419845016957360876}
   - {fileID: 9054467279112487057}
   m_Father: {fileID: 0}
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bases.Base
   _storage: {fileID: 2953169145438988782}
   _scanner: {fileID: 1561469591349696295}
-  _barrack: {fileID: 9182964188886780171}
+  _barrack: {fileID: 8892819760019100489}
   _statistics: {fileID: 3942030417384122243}
   _radius: 2
   _layerMask:
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf0bdf932d24be14f8b8422310ab22d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bases.BaseFlag
-  _flagPrefab: {fileID: 6532871776316574871, guid: 917ca243e9a3e3c4ab12c975eaa24ca7, type: 3}
+  _prefab: {fileID: 4164312559708205234, guid: 917ca243e9a3e3c4ab12c975eaa24ca7, type: 3}
 --- !u!65 &6939028428476534365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -380,6 +380,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &8892819760019100489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069466685817373354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc4ba2500a273e4d84bfd402e541527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bases.BaseBarrack
+  <AmountResourcesSpawn>k__BackingField: 3
+  _unitSpawner: {fileID: 685278106189652256}
+  _startSize: 3
 --- !u!1 &2106877802513164171
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ae0faa0cddd7b44ae3345bb039c15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.Bases.BaseViewStatistics
+  _baseStorage: {fileID: 2953169145438988782}
   _countText: {fileID: 4786138438750818372}
 --- !u!1 &5817552482947543686
 GameObject:
@@ -793,50 +809,3 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8507200812798227261
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7029696608700718251}
-  - component: {fileID: 9182964188886780171}
-  m_Layer: 7
-  m_Name: Barrack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7029696608700718251
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8507200812798227261}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1265424767245008830}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9182964188886780171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8507200812798227261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc4ba2500a273e4d84bfd402e541527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bases.BaseBarrack
-  <AmountResourcesSpawn>k__BackingField: 3
-  _unitSpawner: {fileID: 685278106189652256}
-  _startSize: 3

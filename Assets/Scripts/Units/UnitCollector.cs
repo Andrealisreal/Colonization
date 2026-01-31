@@ -14,7 +14,10 @@ namespace Units
         {
             resource.SetParent(transform);
             resource.localPosition = _offset;
-            resource.gameObject.TryGetComponent(out Resource resourceComponent);
+            
+            if(resource.gameObject.TryGetComponent(out Resource resourceComponent) == false)
+                return;
+            
             Raised?.Invoke(resourceComponent);
         }
     }

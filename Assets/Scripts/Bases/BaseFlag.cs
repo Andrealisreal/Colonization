@@ -5,14 +5,14 @@ namespace Bases
 {
     public class BaseFlag : MonoBehaviour
     {
-        [SerializeField] private GameObject _flagPrefab;
+        [SerializeField] private Flag _prefab;
 
+        private Flag _flagInstance;
+        
         public event Action<Transform> Installed;
 
         public bool IsInstalled { get; private set; }
-
-        private GameObject _flagInstance;
-
+        
         public void SetToGround(Vector3 position)
         {
             if (_flagInstance == null)
@@ -25,6 +25,6 @@ namespace Bases
         }
 
         private void CreateFlag() =>
-            _flagInstance = Instantiate(_flagPrefab);
+            _flagInstance = Instantiate(_prefab);
     }
 }

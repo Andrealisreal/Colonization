@@ -36,7 +36,7 @@ namespace Bases
                 if (_colliders[i].TryGetComponent(out Unit unit) == false)
                     continue;
 
-                if (unit.MyBaseId != _ownerBase)
+                if (unit.OwnerBaseId != _ownerBase)
                     continue;
 
                 if (unit.HasResource == false)

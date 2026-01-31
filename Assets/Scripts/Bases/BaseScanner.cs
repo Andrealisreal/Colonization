@@ -11,7 +11,7 @@ namespace Bases
         [SerializeField] private float _radius;
         [SerializeField] private float _interval;
 
-        private readonly Collider[] _colliders = new Collider[30];
+        private readonly Collider[] _colliders = new Collider[5];
 
         private WaitForSeconds _wait;
 

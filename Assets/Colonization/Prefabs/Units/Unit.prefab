@@ -206,4 +206,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e0ea1b116aabe44b1dc7a4392e78c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Units.UnitBuilder
-  _baseSpawner: {fileID: 0}
+  _baseSpawner: {fileID: 3109025477333130658, guid: 6ced092fc1696cc46978170dfd57c3bd, type: 3}

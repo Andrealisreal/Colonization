@@ -7,7 +7,7 @@ namespace Bases
     public class Base : MonoBehaviour
     {
         private const int ConstructionCost = 5;
-        
+
         [SerializeField] private BaseStorage _storage;
         [SerializeField] private BaseScanner _scanner;
         [SerializeField] private BaseBarrack _barrack;
@@ -18,17 +18,16 @@ namespace Bases
 
         private Transform _flagPosition;
         private ResourceHandler _resourceHandler;
-        
+
         private BaseState _state = BaseState.Idle;
 
         private BaseCollector _collector;
 
         private bool _isSelected;
         private static int _nextId = 1;
-        
+
         public int Id { get; private set; }
-        public BaseBarrack Barrack => _barrack;
-        
+
         private void Awake()
         {
             Id = _nextId++;
@@ -57,9 +56,10 @@ namespace Bases
             _baseFlag.Installed -= OnInstalled;
         }
 
-        public void Initialize(ResourceHandler resourceHandler)
+        public void Initialize(ResourceHandler resourceHandler, bool spawnStartUnits)
         {
             _resourceHandler = resourceHandler;
+            _barrack.Initialize(spawnStartUnits);
             _collector.Released += OnReleased;
         }
 
@@ -67,7 +67,7 @@ namespace Bases
         {
             if (_isSelected == false)
                 return;
-            
+
             if (_barrack.Units.Count < 2)
                 return;
 
@@ -95,8 +95,6 @@ namespace Bases
 
         private void OnCountChanged(int currentCount)
         {
-            _statistics.UpdateCount(currentCount);
-            
             switch (_state)
             {
                 case BaseState.Idle:
@@ -108,7 +106,7 @@ namespace Bases
                     break;
             }
         }
-        
+
         private void HandleIdleState(int currentCount)
         {
             if (currentCount < _barrack.AmountResourcesSpawn)
@@ -117,7 +115,7 @@ namespace Bases
             _storage.DecreaseCount(_barrack.AmountResourcesSpawn);
             _barrack.Spawn();
         }
-        
+
         private void HandleConstructionState(int currentCount)
         {
             if (currentCount < ConstructionCost)
@@ -127,17 +125,17 @@ namespace Bases
             SendUnitToBuild();
             _state = BaseState.Idle;
         }
-        
+
         private void SendUnitToBuild()
         {
             foreach (var unit in _barrack.Units)
             {
                 if (unit.IsBusy)
                     continue;
-                
+
                 _barrack.RemoveUnit(unit);
                 unit.MoveToFlag(_flagPosition);
-                
+
                 return;
             }
         }

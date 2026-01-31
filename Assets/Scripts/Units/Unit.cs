@@ -15,7 +15,7 @@ namespace Units
 
         public bool HasResource { get; private set; }
         public bool IsBusy { get; private set; }
-        public int MyBaseId { get; private set; }
+        public int OwnerBaseId { get; private set; }
 
         private void OnEnable() =>
             _builder.Builded += OnBuilded;
@@ -41,10 +41,10 @@ namespace Units
         public Resource TakeResource() =>
             _currentResource;
 
-        public void SetMyBase(int baseId, Transform basePosition)
+        public void SetOwnerBase(int baseId, Transform basePosition)
         {
             _basePosition = basePosition;
-            MyBaseId = baseId;
+            OwnerBaseId = baseId;
         }
 
         public void Release()
@@ -65,12 +65,12 @@ namespace Units
         private void OnFlagReached(Transform flagPosition)
         {
             _mover.Reached -= OnFlagReached;
-            _builder.Build(flagPosition);
+            _builder.Build(flagPosition, this);
         }
 
         private void OnBuilded(int baseId, Transform basePosition)
         {
-            SetMyBase(baseId, basePosition);
+            SetOwnerBase(baseId, basePosition);
             Release();
         }
     }
